@@ -14,33 +14,38 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
-    <title>E-commerce </title>
+    <title>E-commerce</title>
   </head>
   <body>
-    <nav class="navbar bg-primary" data-bs-theme="">
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand m-auto" href="#">MicrosCode</a>
+        <a href="#">
+          <img
+            src="./assets/assets-slider/LOGO.png"
+            alt="mclogo"
+            width="110px"
+            height="60px"
+          />
+        </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+            style="--bs-scroll-height: 100px"
+          >
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link active" aria-current="page" href="#">INICIO</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -50,17 +55,29 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Categorias
+                PRODUCTOS
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Microscopios</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Muestras y Diapositivas</a>
-                </li>
-                <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                <li><a class="dropdown-item" href="#">MICROSCOPIOS</a></li>
+                <li><a class="dropdown-item" href="#">OTRO</a></li>
+                <li><a class="dropdown-item" href="#">OTRO</a></li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">SOBRE NOSOTROS</a>
+            </li>
           </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
         </div>
       </div>
     </nav>
@@ -88,8 +105,7 @@
         <span class="visually-hidden">Siguiente</span>
       </button>
     </div>
-    <section id="mis_productos"></section>
-
+    <!-- FOOTER -->
     <footer>
       <div class="container text-center">
         <div class="row" id="developers-row"></div>
@@ -101,6 +117,5 @@
       crossorigin="anonymous"
     ></script>
     <script src="./scripts/script.js"></script>
-    <script src="./scripts/renderList.js"></script>
   </body>
 </html>
