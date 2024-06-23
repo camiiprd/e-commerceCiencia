@@ -63,13 +63,21 @@ const createProductosCard = (producto, index) => {
     cardPrice.classList.add("card-text");
     cardPrice.textContent = price;
 
+    const cardLink = document.createElement("a")
+    cardLink.href = "#"
+    cardLink.classList.add("btn", "btn-danger")
+    cardLink.textContent = "comprar"
+    cardLink.target = "_blank"
+
+
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
     cardBody.appendChild(cardPrice);
-
+    cardBody.appendChild(cardLink)
+ 
     card.appendChild(image);
     card.appendChild(cardBody);
-
+    
     return card;
 };
 
