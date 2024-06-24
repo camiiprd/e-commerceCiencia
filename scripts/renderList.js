@@ -1,91 +1,99 @@
-const productos = [
-    {
-        "name": "Kit de microscopio digital Celestron",
-        "imageURL": "https://www.ozscopes.com.au/pub/media/catalog/product/cache/45eb0a64749ceaa7c5482dc7c014d2da/c/e/celestron-digital-microscope-kit-disc_1.jpg",
-        "description": [
-            "Uso como microscopio biológico, tradicional o digital", 
-            "Ampliación de amplio rango",
-             "Fácil de configurar",
-              "Incluye el accesorio de la cámara digital y el software de la computadora",
-               "3 diapositivas preparadas",
-                "Ligero y portátil",
-                 "Garantía limitada de 2 años",
-                ],
-        "price": "U$D 149.95",
-      },
-      
-                    
-]
-console.log(productos)
+const urlProductos = "https://6679076c18a459f6394daa0b.mockapi.io/ecommerceScience/products";
 
-console.log(productos);
+document.addEventListener('DOMContentLoaded', async () => {
+    await cargarProductos();
+});
+
+async function cargarProductos() {
+    try {
+        let productos = [];
+
+        // Intentar obtener productos del localStorage primero
+        const productosLocalStorage = localStorage.getItem('productoss');
+        if (productosLocalStorage) {
+            productos = JSON.parse(productosLocalStorage);
+            console.log('Productos cargados desde localStorage:', productos);
+        } else {
+            const response = await fetch(urlProductos);
+            productos = await response.json();
+            console.log('Productos cargados desde API:', productos);
+
+            // Guardar productos en el localStorage
+            localStorage.setItem('productoss', JSON.stringify(productos));
+        }
+
+        renderizarProductos(productos);
+    } catch (error) {
+        console.error('Error al cargar productos', error);
+    }
+}
+
+const sectionToRender = document.getElementById("mis_productos");
 
 const limitCharacters = (text, limit = 100) => {
     return text.length > limit ? `${text.slice(0, limit)}(...)` : text;
 };
 
-const sectionToRender = document.getElementById("mis_productos");
-
-const classesToApplyFlexboxInSection = ["d-flex", "flex-wrap", "justify-content-evenly"];
-sectionToRender.classList.add(...classesToApplyFlexboxInSection);
-
 const createProductosCard = (producto, index) => {
-    console.log({ producto, index });
-    const { name, imageURL, description, price } = producto;
+    const { title, description, stock, category, image, idProduct, price } = producto;
 
-    const limitDescription = limitCharacters(description.join(' '), 250);
+    const limitDescription = limitCharacters(description, 250);
 
-    
     const card = document.createElement("div");
     card.classList.add("card");
     card.style.width = "18rem";
 
-    const image = document.createElement("img");
-    image.src = imageURL;
-    image.classList.add("card-img-top");
-    image.alt = `${index}-${name}`;
+    const imageElement = document.createElement("img");
+    imageElement.src = image;
+    imageElement.classList.add("card-img-top");
+    imageElement.alt = `${index}-${title}`;
 
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
-    cardBody.style.display = "flex";
-    cardBody.style.flexDirection = "column";
-    cardBody.style.justifyContent = "space-between";
 
     const cardTitle = document.createElement("h5");
     cardTitle.classList.add("card-title");
-    cardTitle.textContent = name;
+    cardTitle.textContent = title;
 
-    const cardText = document.createElement("p");
-    cardText.classList.add("card-text");
-    cardText.textContent = limitDescription;
+    const cardDescription = document.createElement("p");
+    cardDescription.classList.add("card-text");
+    cardDescription.textContent = limitDescription;
+
+    const cardStock = document.createElement("p");
+    cardStock.classList.add("card-text");
+    cardStock.textContent = `Stock: ${stock}`;
+
+    const cardCategory = document.createElement("p");
+    cardCategory.classList.add("card-text");
+    cardCategory.textContent = `Category: ${category}`;
 
     const cardPrice = document.createElement("p");
     cardPrice.classList.add("card-text");
-    cardPrice.textContent = price;
+    cardPrice.textContent = `Price: ${price}`;
 
-    const cardLink = document.createElement("a")
-    cardLink.href = "#"
-    cardLink.classList.add("btn", "btn-danger")
-    cardLink.textContent = "comprar"
-    cardLink.target = "_blank"
-
+    const cardLink = document.createElement("a");
+    cardLink.href = "#";
+    cardLink.classList.add("btn", "btn-danger");
+    cardLink.textContent = "Comprar";
+    cardLink.target = "_blank";
 
     cardBody.appendChild(cardTitle);
-    cardBody.appendChild(cardText);
+    cardBody.appendChild(cardDescription);
+    cardBody.appendChild(cardStock);
+    cardBody.appendChild(cardCategory);
     cardBody.appendChild(cardPrice);
-    cardBody.appendChild(cardLink)
- 
-    card.appendChild(image);
+    cardBody.appendChild(cardLink);
+
+    card.appendChild(imageElement);
     card.appendChild(cardBody);
-    
+
     return card;
 };
 
-const renderProducto = () => {
+
+const renderizarProductos = (productos) => {
     productos.forEach((producto, index) => {
         const productoCard = createProductosCard(producto, index);
         sectionToRender.appendChild(productoCard);
     });
 };
-
-renderProducto();
