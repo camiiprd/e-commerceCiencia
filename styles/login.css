@@ -31,15 +31,6 @@ body {
     background-color: #062342; 
 }
 
-.btn-secondary {
-    background-color: #6c757d; 
-    border-color: #6c757d; 
-}
-
-.btn-secondary:hover {
-    background-color: #5a6268; 
-}
-
 #message {
     text-align: center; 
     color: #af0000; 
