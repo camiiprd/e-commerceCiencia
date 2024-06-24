@@ -31,3 +31,13 @@ footer .col a:hover {
 footer .fa-2x {
   vertical-align: middle;
 }
+
+.btn-secondary{
+  display: flex;
+  margin: 15px;
+  justify-content: center;
+}
+
+#username{
+  text-align: center;
+}

@@ -18,9 +18,9 @@
   </head>
   <body>
     <!-- NAV BAR -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a href="#">
+        <a class="navbar-brand" href="#">
           <img
             src="./assets/assets-slider/LOGO.png"
             alt="mclogo"
@@ -32,18 +32,18 @@
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarScroll"
-          aria-controls="navbarScroll"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-          <ul
-            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
-            style="--bs-scroll-height: 100px"
-          >
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">INICIO</a>
             </li>
@@ -51,13 +51,14 @@
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
+                id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 PRODUCTOS
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#">MICROSCOPIOS</a></li>
                 <li><a class="dropdown-item" href="#">OTRO</a></li>
                 <li><a class="dropdown-item" href="#">OTRO</a></li>
@@ -67,20 +68,45 @@
               <a class="nav-link" href="./pages/aboutus.html">SOBRE NOSOTROS</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
+          <form class="d-flex">
             <input
               class="form-control me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Buscar"
               aria-label="Search"
             />
             <button class="btn btn-outline-success" type="submit">
-              Search
+              Buscar
             </button>
           </form>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user"></i>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="userDropdown"
+              >
+                <li><span id="username" class="nav-link"></span></li>
+                <li><hr class="dropdown-divider" /></li>
+                <button onclick="logout()" class="btn btn-secondary ">
+                  Cerrar Sesión
+                </button>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
+
     <!-- SLIDER -->
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -119,5 +145,6 @@
     ></script>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/renderList.js"></script>
+    <script src="./scripts/login.js"></script>
   </body>
 </html>
