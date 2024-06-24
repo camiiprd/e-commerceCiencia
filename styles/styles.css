@@ -41,3 +41,14 @@ footer .fa-2x {
 #username{
   text-align: center;
 }
+
+#mis_productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 18rem;
+  margin: 0.5rem; /* Espacio entre las cards */
+}
