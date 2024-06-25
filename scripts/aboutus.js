@@ -1,4 +1,19 @@
-// Datos de ejemplo para las tarjetas
+// CARRITO NAVBAR
+document.addEventListener("DOMContentLoaded", () => {
+  const carritoIcon = document.getElementById("carrito-icon");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+
+  carritoIcon.addEventListener("click", (event) => {
+    event.stopPropagation();
+    dropdownMenu.classList.toggle("show");
+  });
+
+  document.addEventListener("click", () => {
+    dropdownMenu.classList.remove("show");
+  });
+});
+
+// CARDS
 const cardsData = [
   {
     title: "Dra. Maria Gutierrez",
@@ -44,7 +59,7 @@ const createCard = (title, description, image) => {
 };
 
 // Obtener el contenedor de las tarjetas
-const cardsContainer = document.getElementById("app");
+const cardsContainer = document.getElementById("testimonios");
 
 // Generar las tarjetas y añadirlas al contenedor
 cardsData.forEach((card) => {
