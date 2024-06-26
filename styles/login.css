@@ -1,0 +1,37 @@
+body {
+    background-color: #f0f0f0; 
+    padding: 20px;
+}
+
+.card {
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.card-header {
+    background-color: #1a446d !important; 
+    color: #fff; 
+    border-bottom: none; 
+}
+
+.card-title {
+    margin-bottom: 0; 
+}
+
+.card-body {
+    padding: 20px; 
+}
+
+.btn-primary {
+    background-color: #1a446d; 
+    border-color: #83a1be; 
+}
+
+.btn-primary:hover {
+    background-color: #062342; 
+}
+
+#message {
+    text-align: center; 
+    color: #af0000; 
+}
