@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// CARDS
+// CARDS DE TESTIMONIOS
 const cardsData = [
   {
     title: "Dra. Maria Gutierrez",
@@ -45,7 +45,7 @@ const cardsData = [
   },
 ];
 
-// Función de flecha para crear las tarjetas
+// CREACIÓN DE TARJETAS
 const createCard = (title, description, image) => {
   return `
       <div class="card">
@@ -58,16 +58,59 @@ const createCard = (title, description, image) => {
     `;
 };
 
-// Obtener el contenedor de las tarjetas
 const cardsContainer = document.getElementById("testimonios");
 
-// Generar las tarjetas y añadirlas al contenedor
+// GENERA EL CONTENEDOR PADRE Y AÑADE
 cardsData.forEach((card) => {
   cardsContainer.innerHTML += createCard(
     card.title,
     card.description,
     card.image
   );
+});
+
+// FORMULARIO
+const form = document.getElementById("forml");
+const nameForm = document.getElementById("name");
+const emailForm = document.getElementById("email");
+const textArea = document.getElementById("text-area");
+const checkForm = document.getElementById("cbox2");
+const urlContactos =
+  "https://667ef5e9f2cb59c38dc79e38.mockapi.io/api/contact/contact";
+
+console.log(form, nameForm, emailForm, textArea, checkForm);
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const name = nameForm.value.trim();
+  const email = emailForm.value.trim();
+  const Comment = textArea.value.trim();
+  const CheckDefault = checkForm.checked;
+
+  const newcontact = {
+    name: name,
+    email: email,
+    Comment: Comment,
+    CheckDefault: CheckDefault,
+  };
+
+  try {
+    const response = await fetch(urlContactos, {
+      method: "POST",
+      body: JSON.stringify(newcontact),
+      headers: { "Content-type": "application/json" },
+    });
+
+    if (response.ok) {
+      alert("Su mensaje fue enviado");
+      form.reset();
+    } else {
+      const errortext = await response.text();
+      alert("Error al enviar", errortext);
+    }
+  } catch (error) {
+    alert("Error al enviar su consulta", error);
+  }
 });
 
 // FOOTER

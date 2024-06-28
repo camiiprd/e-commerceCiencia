@@ -172,21 +172,15 @@
     <div class="divForm col-12">
       <form
         class="form"
+        id="forml"
         action="#"
         target=""
         method="get"
         name="formDatosPersonales"
       >
         <h2 class="textContacto">¿Deseas comunicarte?</h2>
-        <label for="nombre">Nombres</label>
-        <input type="text" name="NOMBRE" id="nombre" placeholder="Nombre" />
-        <label for="apellidos">Apellidos</label>
-        <input
-          type="text"
-          name="APELLIDO"
-          id="apellidos"
-          placeholder="Apellido"
-        />
+        <label for="nombre">Nombre completo</label>
+        <input type="text" name="NOMBRE" id="name" placeholder="Nombre" />
         <label for="email">Email</label>
         <input
           type="email"
@@ -197,6 +191,7 @@
         />
         <label for="mensaje">Consulta</label>
         <textarea
+          id="text-area"
           name="mensaje"
           for="MENSAJE"
           placeholder="Describe tu consulta"
