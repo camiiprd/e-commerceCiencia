@@ -1,0 +1,30 @@
+.cart-overlay {
+    display: none;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    width: 300px;
+    z-index: 1000;
+}
+
+.cart {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.cart h5 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.cart-total {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.cart-total .total-price {
+    color: #28a745;
+}
