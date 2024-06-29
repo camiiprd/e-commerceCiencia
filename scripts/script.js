@@ -111,3 +111,56 @@ const updateFooter = (developers) => {
 
 // Llamar a la función fetchDeveloperData cuando se carga el DOM
 document.addEventListener("DOMContentLoaded", fetchDeveloperData);
+
+//carrito
+
+document.getElementById('cartDropdown').onclick = function() {
+  var cartOverlay = document.getElementById('cartOverlay');
+  if (cartOverlay.style.display === 'block') {
+      cartOverlay.style.display = 'none';
+  } else {
+      cartOverlay.style.display = 'block';
+  }
+};
+
+// Evento al hacer clic en el ícono del carrito para mostrar/ocultar el overlay del carrito
+document.getElementById('cartDropdown').onclick = function(event) {
+  var cartOverlay = document.getElementById('cartOverlay');
+  if (cartOverlay.style.display === 'block') {
+      cartOverlay.style.display = 'none';
+  } else {
+      cartOverlay.style.display = 'block';
+  }
+  event.stopPropagation(); // Evitar que el clic se propague y cierre inmediatamente
+};
+
+// Evento al hacer clic en cualquier parte del documento para cerrar el overlay del carrito si está abierto
+document.addEventListener('click', function(event) {
+  var cartOverlay = document.getElementById('cartOverlay');
+  var cartDropdown = document.getElementById('cartDropdown');
+  
+  if (cartOverlay.style.display === 'block' && !cartDropdown.contains(event.target) && event.target.id !== 'cartOverlay') {
+      cartOverlay.style.display = 'none';
+  }
+});
+
+
+// Función para agregar un producto al carrito
+function addToCart(title, price) {
+  // Lógica para agregar un producto al carrito (ejemplo simplificado)
+  console.log(`Agregando "${title}" al carrito por $${price}`);
+}
+
+// Evento al hacer clic en botones "Agregar al carrito"
+document.addEventListener('click', function(event) {
+  if (event.target.classList.contains('add-to-cart')) {
+      var title = event.target.getAttribute('data-title');
+      var price = parseFloat(event.target.getAttribute('data-price'));
+      addToCart(title, price);
+  }
+});
+
+// Llama a la función para mostrar productos cuando la página está lista
+document.addEventListener('DOMContentLoaded', function() {
+  displayProducts();
+});
