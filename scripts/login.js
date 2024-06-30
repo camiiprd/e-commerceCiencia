@@ -62,5 +62,9 @@ async function mostrarUsers(){
 
 async function logout(){
     localStorage.removeItem('logUser')
+    window.location.href = './index.html'
+}
+
+async function log(){
     window.location.href = './pages/login.html'
 }
