@@ -62,8 +62,7 @@
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="#" id="cartDropdown" role="button">
-                        <i class="fas fa-shopping-cart"></i> Carrito
-                        <span class="badge badge-pill badge-primary">0</span>
+                        <i class="fas fa-shopping-cart"></i> Carrito <span class="badge badge-pill badge-primary">0</span>
                     </a>
                 </div>
             </div>
@@ -71,12 +70,14 @@
         <div class="cart-overlay" id="cartOverlay">
             <div class="cart">
                 <h5>Carrito de Compras</h5>
-                <ul class="list-group" id="cartItemList">
+                <ul class="list-group">
                     <!-- Aquí se agregarán los productos -->
                 </ul>
                 <div class="cart-total">
                     Total: <span class="total-price">$0</span>
                 </div>
+                <button id="clearCartIndex" class="btn btn-danger mt-2">Vaciar carrito</button>
+                <a href="./pages/cart-summary.html" class="btn btn-primary mt-2">Ver mi carrito</a>
             </div>
         </div>
     </header>

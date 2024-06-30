@@ -1,30 +1,34 @@
 .cart-overlay {
     display: none;
     position: fixed;
-    top: 70px;
-    right: 20px;
+    top: 0;
+    right: 0;
     width: 300px;
+    height: 100%;
+    background-color: white;
+    border-left: 1px solid #ccc;
     z-index: 1000;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
 }
 
 .cart {
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .cart h5 {
-    margin-bottom: 10px;
-    font-size: 18px;
+    margin-bottom: 20px;
 }
 
-.cart-total {
-    margin-top: 10px;
+.cart .list-group {
+    flex-grow: 1;
+    margin-bottom: 20px;
+    overflow-y: auto;
+}
+
+.cart .cart-total {
     font-weight: bold;
-    text-align: right;
-}
-
-.cart-total .total-price {
-    color: #28a745;
+    margin-bottom: 20px;
 }

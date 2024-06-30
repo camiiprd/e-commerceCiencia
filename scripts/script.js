@@ -1,18 +1,3 @@
-// CARRITO NAVBAR
-document.addEventListener("DOMContentLoaded", () => {
-  const carritoIcon = document.getElementById("carrito-icon");
-  const dropdownMenu = document.querySelector(".dropdown-menu");
-
-  carritoIcon.addEventListener("click", (event) => {
-    event.stopPropagation();
-    dropdownMenu.classList.toggle("show");
-  });
-
-  document.addEventListener("click", () => {
-    dropdownMenu.classList.remove("show");
-  });
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   // Array de objetos con información de las imágenes
   var images = [
@@ -112,55 +97,76 @@ const updateFooter = (developers) => {
 // Llamar a la función fetchDeveloperData cuando se carga el DOM
 document.addEventListener("DOMContentLoaded", fetchDeveloperData);
 
-//carrito
 
-document.getElementById('cartDropdown').onclick = function() {
-  var cartOverlay = document.getElementById('cartOverlay');
-  if (cartOverlay.style.display === 'block') {
-      cartOverlay.style.display = 'none';
-  } else {
-      cartOverlay.style.display = 'block';
-  }
-};
-
-// Evento al hacer clic en el ícono del carrito para mostrar/ocultar el overlay del carrito
-document.getElementById('cartDropdown').onclick = function(event) {
-  var cartOverlay = document.getElementById('cartOverlay');
-  if (cartOverlay.style.display === 'block') {
-      cartOverlay.style.display = 'none';
-  } else {
-      cartOverlay.style.display = 'block';
-  }
-  event.stopPropagation(); // Evitar que el clic se propague y cierre inmediatamente
-};
-
-// Evento al hacer clic en cualquier parte del documento para cerrar el overlay del carrito si está abierto
-document.addEventListener('click', function(event) {
-  var cartOverlay = document.getElementById('cartOverlay');
-  var cartDropdown = document.getElementById('cartDropdown');
-  
-  if (cartOverlay.style.display === 'block' && !cartDropdown.contains(event.target) && event.target.id !== 'cartOverlay') {
-      cartOverlay.style.display = 'none';
-  }
-});
+// resumen del carrito desplegable 
 
 
-// Función para agregar un producto al carrito
-function addToCart(title, price) {
-  // Lógica para agregar un producto al carrito (ejemplo simplificado)
-  console.log(`Agregando "${title}" al carrito por $${price}`);
-}
 
-// Evento al hacer clic en botones "Agregar al carrito"
-document.addEventListener('click', function(event) {
-  if (event.target.classList.contains('add-to-cart')) {
-      var title = event.target.getAttribute('data-title');
-      var price = parseFloat(event.target.getAttribute('data-price'));
-      addToCart(title, price);
-  }
-});
-
-// Llama a la función para mostrar productos cuando la página está lista
 document.addEventListener('DOMContentLoaded', function() {
-  displayProducts();
+  var cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function updateCart() {
+      var cartList = document.querySelector('.list-group');
+      var total = 0;
+      var totalQuantity = 0;
+
+      cartList.innerHTML = ''; // Limpiar contenido actual
+
+      cart.forEach(function(item) {
+          var listItem = document.createElement('li');
+          listItem.classList.add('list-group-item');
+          listItem.textContent = `${item.product} - $${item.price.toFixed(2)} x ${item.quantity}`;
+          cartList.appendChild(listItem);
+          total += item.price * item.quantity;
+          totalQuantity += item.quantity;
+      });
+
+      document.querySelector('.total-price').textContent = `$${total.toFixed(2)}`;
+      document.querySelector('.badge').textContent = totalQuantity;
+      localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  document.querySelectorAll('.add-to-cart').forEach(function(button) {
+      button.addEventListener('click', function() {
+          var product = this.closest('.card-body').querySelector('.card-title').textContent;
+          var price = parseFloat(this.closest('.card-body').querySelector('.card-text').textContent.replace('$', ''));
+          var existingItem = cart.find(function(item) {
+              return item.product === product;
+          });
+
+          if (existingItem) {
+              existingItem.quantity++;
+          } else {
+              cart.push({ product: product, price: price, quantity: 1 });
+          }
+
+          updateCart();
+      });
+  });
+
+  document.getElementById('cartDropdown').addEventListener('click', function(event) {
+      var cartOverlay = document.getElementById('cartOverlay');
+      cartOverlay.style.display = cartOverlay.style.display === 'block' ? 'none' : 'block';
+      event.stopPropagation();
+  });
+
+  document.addEventListener('click', function(event) {
+      var cartOverlay = document.getElementById('cartOverlay');
+      if (cartOverlay.style.display === 'block' && !event.target.closest('#cartDropdown') && !event.target.closest('#cartOverlay')) {
+          cartOverlay.style.display = 'none';
+      }
+  });
+
+  // Añadir el evento de vaciar carrito
+  document.getElementById('clearCartIndex').addEventListener('click', function() {
+      cart = [];
+      updateCart();
+      // Despachar evento personalizado para informar a otras partes del sistema
+      var clearCartEvent = new Event('clearCartEvent');
+      document.dispatchEvent(clearCartEvent);
+  });
+
+  updateCart();
 });
+
+
