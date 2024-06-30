@@ -1,5 +1,3 @@
-// aqui va todo lo de la pagina de "VER MI CARRITO"
-
 document.addEventListener('DOMContentLoaded', function() {
     var cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -20,11 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 cartItem.innerHTML = `
                     <h5>${item.product} (${item.quantity})</h5>
                     <p>Precio: $${item.price.toFixed(2)}</p>
-                    <p>Cantidad: 
-                        <button class="btn btn-sm btn-outline-secondary decrease-quantity" data-index="${index}">-</button>
-                        ${item.quantity}
-                        <button class="btn btn-sm btn-outline-secondary increase-quantity" data-index="${index}">+</button>
-                    </p>
+                    <button class="btn btn-sm btn-outline-secondary decrease-quantity" data-index="${index}">-</button>
+                    ${item.quantity}
+                    <button class="btn btn-sm btn-outline-secondary increase-quantity" data-index="${index}">+</button>
                     <button class="btn btn-sm btn-danger remove-item" data-index="${index}">Eliminar</button>
                 `;
                 cartSummary.appendChild(cartItem);
