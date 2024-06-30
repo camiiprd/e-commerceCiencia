@@ -5,22 +5,24 @@ document.addEventListener('DOMContentLoaded', function() {
     var cartOverlay = document.getElementById('cartOverlay');
     var cartDropdown = document.getElementById('cartDropdown');
 
-    // Función para limitar caracteres
-    const limitCharacters = (text, limit = 100) => {
-        return text.length > limit ? `${text.slice(0, limit)}(...)` : text;
+    // Función para limitar caracteres y añadir un enlace de "Ver más"
+    const limitCharacters = (text, limit = 250) => {
+        if (text.length > limit) {
+            const trimmedText = text.slice(0, limit);
+            return `${trimmedText}... <a href="#" class="card-link">Ver más</a>`;
+        }
+        return text;
     };
 
     // Función para crear la tarjeta de producto
     const createProductosCard = (producto, index) => {
         const { title, description, stock, category, image, id, price } = producto;
 
-        const limitDescription = limitCharacters(description, 250);
-
         const card = document.createElement("div");
-        card.classList.add("col-md-6", "mb-4");
+        card.classList.add("col-md-4", "mb-4"); // Cambiado a col-md-4 para mostrar 3 por fila en pantallas medianas
 
         const cardInner = document.createElement("div");
-        cardInner.classList.add("card");
+        cardInner.classList.add("card", "h-100");
 
         const imageElement = document.createElement("img");
         imageElement.src = image;
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         imageElement.alt = `${index}-${title}`;
 
         const cardBody = document.createElement("div");
-        cardBody.classList.add("card-body");
+        cardBody.classList.add("card-body", "d-flex", "flex-column");
 
         const cardTitle = document.createElement("h5");
         cardTitle.classList.add("card-title");
@@ -36,10 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const cardDescription = document.createElement("p");
         cardDescription.classList.add("card-text");
-        cardDescription.textContent = limitDescription;
+        cardDescription.innerHTML = limitCharacters(description);
 
         const cardStock = document.createElement("p");
-        cardStock.classList.add("card-text");
+        cardStock.classList.add("card-text", "mt-auto");
         cardStock.textContent = `Stock: ${stock}`;
 
         const cardCategory = document.createElement("p");
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cardPrice.textContent = `Price: $${price}`;
 
         const cardButton = document.createElement("button");
-        cardButton.classList.add("btn", "btn-primary", "btn-sm", "add-to-cart");
+        cardButton.classList.add("btn", "btn-primary", "btn-sm", "add-to-cart", "mt-2", "align-self-start");
         cardButton.textContent = "Agregar al carrito";
         cardButton.setAttribute('data-id', id);
 
@@ -78,11 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const productsLocalStorage = localStorage.getItem('productoss');
             if (productsLocalStorage) {
                 products = JSON.parse(productsLocalStorage);
-                console.log('Productos cargados desde localStorage:', products);
             } else {
-                const response = await fetch(urlProducts);
+                const response = await fetch(urlProducts, {
+                    cache: 'no-store'
+                })
                 products = await response.json();
-                console.log('Productos cargados desde API:', products);
 
                 // Guardar productos en el localStorage
                 localStorage.setItem('productoss', JSON.stringify(products));
@@ -155,7 +157,14 @@ document.addEventListener('DOMContentLoaded', function() {
         cartOverlay.style.display = 'none';
     }
 
-    // Interacción con el carrito
+    // Cerrar overlay de carrito al hacer clic fuera de él
+    document.addEventListener('click', function(event) {
+        if (!cartOverlay.contains(event.target) && event.target !== cartDropdown) {
+            hideCartOverlay();
+        }
+    });
+
+    // Vaciar carrito
     var clearCartButton = document.getElementById('clearCartIndex');
     if (clearCartButton) {
         clearCartButton.addEventListener('click', function() {
@@ -163,15 +172,4 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCart();
         });
     }
-
-    cartDropdown.addEventListener('click', function() {
-        showCartOverlay();
-    });
-
-    // Cerrar overlay de carrito al hacer clic fuera de él
-    document.addEventListener('click', function(event) {
-        if (!cartOverlay.contains(event.target) && event.target !== cartDropdown) {
-            hideCartOverlay();
-        }
-    });
 });

@@ -48,8 +48,6 @@ const developerRow = document.getElementById("developers-row");
 const urlMockApi =
   "https://666cf4a27a3738f7cacb09c9.mockapi.io/ecommerceScience/developers";
 
-console.log("URL de la API:", urlMockApi);
-
 // Función para obtener datos del desarrollador desde MockAPI de manera asíncrona
 const fetchDeveloperData = async () => {
   try {

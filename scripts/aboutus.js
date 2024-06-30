@@ -75,10 +75,7 @@ const nameForm = document.getElementById("name");
 const emailForm = document.getElementById("email");
 const textArea = document.getElementById("text-area");
 const checkForm = document.getElementById("cbox2");
-const urlContactos =
-  "https://667ef5e9f2cb59c38dc79e38.mockapi.io/api/contact/contact";
-
-console.log(form, nameForm, emailForm, textArea, checkForm);
+const urlContactos ="https://667ef5e9f2cb59c38dc79e38.mockapi.io/api/contact/contact";
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -117,10 +114,7 @@ form.addEventListener("submit", async (event) => {
 
 const developerRow = document.getElementById("developers-row");
 
-const urlMockApi =
-  "https://666cf4a27a3738f7cacb09c9.mockapi.io/ecommerceScience/developers";
-
-console.log("URL de la API:", urlMockApi);
+const urlMockApi ="https://666cf4a27a3738f7cacb09c9.mockapi.io/ecommerceScience/developers";
 
 // Función para obtener datos del desarrollador desde MockAPI de manera asíncrona
 const fetchDeveloperData = async () => {
