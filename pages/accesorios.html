@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/cart.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/cart.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <title>E-commerce</title>
+    <title>Accesorios</title>
 </head>
 <body>
     <!-- NAV BAR -->
@@ -16,7 +16,7 @@
             <div class="container-fluid">
                 <div>
                     <a class="navbar-brand" href="#">
-                        <img src="./assets/assets-slider/LOGO.png" alt="mclogo" width="110px" height="60px">
+                        <img src="../assets/assets-slider/LOGO.png" alt="mclogo" width="110px" height="60px">
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,20 +25,20 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">INICIO</a>
+                            <a class="nav-link active" aria-current="page" href="../index.html">INICIO</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 PRODUCTOS
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./pages/microscopios.html">Microscopios</a></li>
-                                <li><a class="dropdown-item" href="./pages/muestras.html">Muestras y Diapositivas</a></li>
-                                <li><a class="dropdown-item" href="./pages/accesorios.html">Accesorios</a></li>
+                                <li><a class="dropdown-item" href="microscopios.html">Microscopios</a></li>
+                                <li><a class="dropdown-item" href="muestras.html">Muestras y Diapositivas</a></li>
+                                <li><a class="dropdown-item" href="accesorios.html">Accesorios</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./pages/aboutus.html">SOBRE NOSOTROS</a>
+                            <a class="nav-link" href="../pages/aboutus.html">SOBRE NOSOTROS</a>
                         </li>
                     </ul>
                     <form class="d-flex">
@@ -71,36 +71,10 @@
             </div>
         </nav>
     </header>
-    <!-- SLIDER -->
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <!-- Los elementos .carousel-item se generarán dinámicamente aquí -->
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
-    </div>
-    <div class="cart-overlay" id="cartOverlay">
-        <div class="cart">
-            <h5>Carrito de Compras</h5>
-            <ul class="list-group">
-                <!-- Aquí se agregarán los productos -->
-            </ul>
-            <div class="cart-total">
-                Total: <span class="total-price">$0</span>
-            </div>
-            <button id="clearCartIndex" class="btn btn-danger mt-2">Vaciar carrito</button>
-            <a href="./pages/cart-summary.html" class="btn btn-primary mt-2">Ver mi carrito</a>
-        </div>
-    </div>
     
+    <!-- LISTA DE PRODUCTOS -->
     <div class="container">
-        <h1 class="mt-3">Productos</h1>
+        <h1 class="mt-3">Accesorios</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4" id="productList">
             <!-- Aquí se agregarán los productos -->
         </div>
@@ -112,11 +86,12 @@
             <div class="row" id="developers-row"></div>
         </div>
     </footer>
+    
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/products.js"></script>
-    <script src="./scripts/login.js"></script>
-    <script src="./scripts/cart-summary.js"></script>
-    <!-- <script src="./pages/login.html"></script> -->
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/products.js"></script>
+    <script src="../scripts/login.js"></script>
+    <script src="../scripts/accesorios.js"></script>
 </body>
 </html>
