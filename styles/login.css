@@ -1,37 +1,45 @@
-body {
-    background-color: #f0f0f0; 
-    padding: 20px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  width: 100%;
+}
+
+.container {
+  margin-top: 150px;
+}
 .card {
-    border-radius: 8px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
-    background-color: #1a446d !important; 
-    color: #fff; 
-    border-bottom: none; 
+  background-color: #1a446d !important;
+  color: #fff;
+  border-bottom: none;
 }
 
 .card-title {
-    margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
 .card-body {
-    padding: 20px; 
+  padding: 20px;
 }
 
 .btn-primary {
-    background-color: #1a446d; 
-    border-color: #83a1be; 
+  background-color: #1a446d;
+  border-color: #83a1be;
 }
 
 .btn-primary:hover {
-    background-color: #062342; 
+  background-color: #062342;
 }
 
 #message {
-    text-align: center; 
-    color: #af0000; 
+  text-align: center;
+  color: #af0000;
 }

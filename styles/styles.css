@@ -7,8 +7,29 @@
 
 body {
   width: 100%;
+  height: 100vh;
+  background-color: #f0f0f0;
 }
 
+.card {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 3px;
+  color: #333;
+}
+
+p {
+  font-size: 14px;
+  color: #666;
+}
 
 /* Estilos del footer */
 footer {
@@ -69,15 +90,4 @@ footer .fa-2x {
 
 #username {
   text-align: center;
-}
-
-#mis_productos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card {
-  width: 18rem;
-  margin: 0.5rem; 
 }
