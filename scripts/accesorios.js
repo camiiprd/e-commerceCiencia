@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             productList.innerHTML = filteredProducts.map(product => `
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="${product.imageUrl}" class="card-img-top" alt="${product.title}">
+                        <img src="${product.image}" class="card-img-top" alt="${product.title}">
                         <div class="card-body">
                             <h5 class="card-title">${product.title}</h5>
                             <p class="card-text">${product.description}</p>
