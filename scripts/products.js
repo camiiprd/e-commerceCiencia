@@ -157,6 +157,16 @@ document.addEventListener('DOMContentLoaded', function() {
         cartOverlay.style.display = 'none';
     }
 
+    // Mostrar overlay del carrito al hacer clic en el ícono del carrito
+    cartDropdown.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevenir que el evento se propague y cierre el overlay
+        if (cartOverlay.style.display === 'block') {
+            hideCartOverlay();
+        } else {
+            showCartOverlay();
+        }
+    });
+
     // Cerrar overlay de carrito al hacer clic fuera de él
     document.addEventListener('click', function(event) {
         if (!cartOverlay.contains(event.target) && event.target !== cartDropdown) {
@@ -172,4 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCart();
         });
     }
+
+    // Al cargar la página, asegurarse de que el carrito esté actualizado
+    updateCart();
 });
