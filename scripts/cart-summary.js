@@ -93,11 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateLocalStorage();
     });
 
-    // Escuchar el evento clearCartEvent para vaciar el carrito si se ha vaciado desde el script principal
-    document.addEventListener('clearCartEvent', function() {
-        cart = [];
-        updateCartSummary();
-    });
 
     updateCartSummary();
 });
