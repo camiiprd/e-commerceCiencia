@@ -52,7 +52,6 @@ footer .fa-2x {
   vertical-align: middle;
 }
 
-/* CSS FORMULARIO */
 .textContacto {
   text-align: center;
   color: white;
@@ -69,14 +68,14 @@ footer .fa-2x {
   background: #666;
   border: #383838 6px;
 }
-/* CSS LABEL */
+
 form label {
   width: 100%;
   font-weight: bold;
   display: block;
   color: white;
 }
-/* CSS INPUT */
+
 form input[type="text"],
 form input[type="email"] {
   width: 100%;
@@ -101,7 +100,7 @@ form input[type="submit"]:hover {
   cursor: pointer;
   background-color: grey;
 }
-/* CSS TEXTAREA */
+
 textarea {
   width: 100%;
   height: 100px;
@@ -112,7 +111,7 @@ textarea {
   resize: none;
   display: block;
 }
-/* CSS CHECKBOX */
+
 .check {
   display: flex;
 }

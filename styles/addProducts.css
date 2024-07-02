@@ -15,7 +15,7 @@ h1 {
 form {
     max-width: 600px;
     margin: auto;
-    background-color: rgba(255, 255, 253, 0.9); /* Fondo blanco semi-transparente */
+    background-color: rgba(255, 255, 253, 0.9);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -71,7 +71,7 @@ button[type="submit"]:disabled {
 }
 
 
-/* addProducts.css */
+
 .btn-primary {
     background-color: #867f73;
     color: white;

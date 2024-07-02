@@ -1,4 +1,4 @@
-// CARDS DE TESTIMONIOS
+
 const cardsData = [
   {
     title: "Dra. Maria Caro",
@@ -30,7 +30,7 @@ const cardsData = [
   },
 ];
 
-// CREACIÓN DE TARJETAS
+
 const createCard = (title, description, image) => {
   return `
       <div class="card">
@@ -45,7 +45,7 @@ const createCard = (title, description, image) => {
 
 const cardsContainer = document.getElementById("testimonios");
 
-// GENERA EL CONTENEDOR PADRE Y AÑADE
+
 cardsData.forEach((card) => {
   cardsContainer.innerHTML += createCard(
     card.title,
@@ -54,7 +54,7 @@ cardsData.forEach((card) => {
   );
 });
 
-// FORMULARIO
+
 const form = document.getElementById("forml");
 const nameForm = document.getElementById("name");
 const emailForm = document.getElementById("email");
@@ -96,29 +96,23 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
-// FOOTER
 
 const developerRow = document.getElementById("developers-row");
 
 const urlMockApi =
   "https://666cf4a27a3738f7cacb09c9.mockapi.io/ecommerceScience/developers";
-
-// Función para obtener datos del desarrollador desde MockAPI de manera asíncrona
 const fetchDeveloperData = async () => {
   try {
-    // Verificar si hay datos en localStorage
     const storedDevelopers = localStorage.getItem("devs");
     if (storedDevelopers) {
       const developers = JSON.parse(storedDevelopers);
       updateFooter(developers);
     } else {
-      // Si no hay datos en localStorage, hacer la solicitud a MockAPI
       const response = await fetch(urlMockApi);
       console.log("Respuesta de la API:", response);
       const data = await response.json();
       console.log("Datos del desarrollador:", data);
       if (data && data.length > 0) {
-        // Guardar en localStorage
         localStorage.setItem("devs", JSON.stringify(data));
         updateFooter(data);
       }
@@ -128,9 +122,9 @@ const fetchDeveloperData = async () => {
   }
 };
 
-// Función para actualizar el contenido del footer
+
 const updateFooter = (developers) => {
-  developerRow.innerHTML = ""; // Limpia el contenido actual
+  developerRow.innerHTML = ""; 
   developers.forEach((developer) => {
     const col = document.createElement("div");
     col.classList.add("col");
@@ -147,5 +141,4 @@ const updateFooter = (developers) => {
   });
 };
 
-// Llamar a la función fetchDeveloperData cuando se carga el DOM
 document.addEventListener("DOMContentLoaded", fetchDeveloperData);

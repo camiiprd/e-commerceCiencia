@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
         var total = 0;
         var totalQuantity = 0;
 
-        cartSummary.innerHTML = ""; // Limpiar contenido actual
+        cartSummary.innerHTML = ""; 
 
         if (cart.length === 0) {
             cartSummary.innerHTML = "<p>No hay productos en el carrito.</p>";
-            document.getElementById("checkout").disabled = true; // Deshabilitar el botón de checkout si no hay productos
+            document.getElementById("checkout").disabled = true; 
         } else {
             cart.forEach(function (item, index) {
                 var cartItem = document.createElement("div");
@@ -28,20 +28,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 totalQuantity += item.quantity;
             });
 
-            document.getElementById("checkout").disabled = false; // Habilitar el botón de checkout
+            document.getElementById("checkout").disabled = false; 
 
             var totalPriceElement = document.getElementsByClassName("total-price")[1];
             var totalQuantityElement = document.querySelector(".total-quantity");
 
             console.log(totalPriceElement, total);
             if (totalPriceElement) {
-                totalPriceElement.textContent = `$${total.toFixed(2)}`; // Actualizar el total mostrado
+                totalPriceElement.textContent = `$${total.toFixed(2)}`; 
             } else {
                 console.error("Elemento .total-price no encontrado.");
             }
 
             if (totalQuantityElement) {
-                totalQuantityElement.textContent = totalQuantity; // Mostrar la cantidad total de productos
+                totalQuantityElement.textContent = totalQuantity; 
             } else {
                 console.error("Elemento .total-quantity no encontrado.");
             }
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateCartSummary();
                 updateLocalStorage();
 
-                // Despachar evento personalizado para vaciar el carrito si está vacío
+                
                 if (cart.length === 0) {
                     var clearCartEvent = new Event("clearCartEvent");
                     document.dispatchEvent(clearCartEvent);
