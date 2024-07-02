@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const cardCategory = document.createElement("p");
     cardCategory.classList.add("card-text");
-    cardCategory.textContent = `Category: ${category}`;
+    cardCategory.textContent = `Categoria: ${category}`;
 
     const cardPrice = document.createElement("p");
     cardPrice.classList.add("card-text");
-    cardPrice.textContent = `Price: $${price}`;
+    cardPrice.textContent = `Precio: $${price}`;
 
     const cardButton = document.createElement("button");
     cardButton.classList.add(
@@ -200,8 +200,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Limpiar localStorage al recargar la página
-  window.addEventListener('beforeunload', function() {
-    localStorage.removeItem('productoss'); // Asegúrate de usar el mismo nombre de clave
+  window.addEventListener("beforeunload", function () {
+    localStorage.removeItem("productoss"); // Asegúrate de usar el mismo nombre de clave
   });
 
   // Al cargar la página, asegurarse de que el carrito esté actualizado
