@@ -199,6 +199,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Limpiar localStorage al recargar la página
+  window.addEventListener('beforeunload', function() {
+    localStorage.removeItem('productoss'); // Asegúrate de usar el mismo nombre de clave
+  });
+
   // Al cargar la página, asegurarse de que el carrito esté actualizado
   updateCart();
 });

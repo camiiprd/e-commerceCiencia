@@ -4,13 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateCartSummary() {
     var cartSummary = document.getElementById("cartSummary");
     var total = 0;
-    var totalQuantity = 0; // Variable para la cantidad total de productos
+    var totalQuantity = 0;
 
     cartSummary.innerHTML = ""; // Limpiar contenido actual
 
     if (cart.length === 0) {
       cartSummary.innerHTML = "<p>No hay productos en el carrito.</p>";
-      document.getElementById("checkout").disabled = true; // Deshabilitar el botón de checkout
+      document.getElementById("checkout").disabled = true; // Deshabilitar el botón de checkout si no hay productos
     } else {
       cart.forEach(function (item, index) {
         var cartItem = document.createElement("div");
@@ -25,25 +25,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 `;
         cartSummary.appendChild(cartItem);
         total += item.price * item.quantity;
-        totalQuantity += item.quantity; // Sumar la cantidad de este producto al total
+        totalQuantity += item.quantity;
       });
 
       document.getElementById("checkout").disabled = false; // Habilitar el botón de checkout
-    }
 
-    var totalPriceElement = document.querySelector(".total-price");
-    var totalQuantityElement = document.querySelector(".total-quantity");
+      var totalPriceElement = document.querySelector(".total-price");
+      var totalQuantityElement = document.querySelector(".total-quantity");
 
-    if (totalPriceElement) {
-      totalPriceElement.textContent = `$${total.toFixed(2)}`; // Actualizar el total mostrado
-    } else {
-      console.error("Elemento .total-price no encontrado.");
-    }
+      if (totalPriceElement) {
+        totalPriceElement.textContent = `$${total.toFixed(2)}`; // Actualizar el total mostrado
+      } else {
+        console.error("Elemento .total-price no encontrado.");
+      }
 
-    if (totalQuantityElement) {
-      totalQuantityElement.textContent = totalQuantity; // Mostrar la cantidad total de productos
-    } else {
-      console.error("Elemento .total-quantity no encontrado.");
+      if (totalQuantityElement) {
+        totalQuantityElement.textContent = totalQuantity; // Mostrar la cantidad total de productos
+      } else {
+        console.error("Elemento .total-quantity no encontrado.");
+      }
     }
   }
 

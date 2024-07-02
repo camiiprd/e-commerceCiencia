@@ -1,5 +1,3 @@
-// products.js
-
 document.addEventListener("DOMContentLoaded", function () {
   const productList = document.getElementById("productList");
 
@@ -39,26 +37,59 @@ document.addEventListener("DOMContentLoaded", function () {
                             <h5 class="card-title">${product.title}</h5>
                             <p class="card-text">${product.description}</p>
                             <p class="card-text">${product.price}</p>
-                            <button class="btn btn-dark">Agregar al carrito</button>
+                            <button class="btn btn-dark add-to-cart" data-id="${product.id}">Agregar al carrito</button>
                         </div>
                     </div>
                 </div>
             `
         )
         .join("");
+
+      // Agregar listener de evento para los botones "Agregar al carrito"
+      const addToCartButtons = document.querySelectorAll(".add-to-cart");
+      addToCartButtons.forEach((button) => {
+        button.addEventListener("click", async function (event) {
+          const productId = button.getAttribute("data-id");
+
+          try {
+            const response = await fetch(`${apiUrl}/${productId}`);
+            const product = await response.json();
+
+            // Lógica para agregar el producto al carrito
+            // Aquí deberías adaptar tu lógica de manejo del carrito según necesites
+            console.log("Agregando al carrito:", product);
+          } catch (error) {
+            console.error("Error al agregar al carrito:", error);
+          }
+        });
+      });
     }
   }
 
-  // Detectar clic en el menú desplegable y filtrar productos
-  const dropdownItems = document.querySelectorAll(".dropdown-item");
-  dropdownItems.forEach((item) => {
-    item.addEventListener("click", function (event) {
-      event.preventDefault();
-      const category = item.textContent.trim();
-      showProducts(category); // Llama a la función showProducts con la categoría seleccionada
-    });
-  });
+  function updateCart() {
+    var cartList = document.querySelector(".list-group");
+    var total = 0;
+    var totalQuantity = 0;
 
-  // Inicialmente, muestra los productos de la categoría 'Microscopios'
-  showProducts("Muestras y Diapositivas");
+    cartList.innerHTML = ""; // Limpiar contenido actual
+
+    cart.forEach(function (item) {
+      var listItem = document.createElement("li");
+      listItem.classList.add("list-group-item");
+      listItem.textContent = `${item.product} - $${item.price.toFixed(2)} x ${
+        item.quantity
+      }`;
+      cartList.appendChild(listItem);
+      total += item.price * item.quantity;
+      totalQuantity += item.quantity;
+    });
+
+    document.querySelector(".total-price").textContent = `$${total.toFixed(2)}`;
+    document.querySelector(".badge").textContent = totalQuantity;
+    localStorage.setItem("cart", JSON.stringify(cart));
+    
+  }
+
+  
+updateCart()
 });

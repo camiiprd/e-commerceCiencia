@@ -138,6 +138,22 @@
       </nav>
     </header>
 
+    <div class="cart-overlay" id="cartOverlay">
+      <div class="cart">
+        <h5>Carrito de Compras</h5>
+        <ul class="list-group">
+          <!-- Aquí se agregarán los productos -->
+        </ul>
+        <div class="cart-total">Total: <span class="total-price">$0</span></div>
+        <button id="clearCartIndex" class="btn btn-danger mt-2">
+          Vaciar carrito
+        </button>
+        <a href="./cart-summary.html" class="btn btn-primary mt-2"
+          >Ver mi carrito</a
+        >
+      </div>
+    </div>
+
     <!-- LISTA DE PRODUCTOS -->
     <section class="products d-flex justify-content-center">
       <div
@@ -146,27 +162,16 @@
       ></div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
+     <!-- FOOTER -->
+     <footer>
+      <div class="imagen1"><img  src="../assets/assets-slider/LOGO.png" alt="foto Logo"></div>
       <div class="container text-center mb-3 mt-2">
-        <div class="row" id="developers-row"></div>
-      </div>
-      <div
-        class="text-center mt-1"
-        style="background-color: rgba(153, 159, 159, 0.901)"
-      >
-        © 2024 Derechos de autor:
-        <a
-          class="text-reset fw-bold text text-decoration-none"
-          href="https://e-commerce-science.netlify.app"
-          target="_blank"
-          >MicrosCode-ecommers.netlify.app</a
-        >
+          <div class="row" id="developers-row"></div>
       </div>
       <div class="container text-center mt-0">
-        <div class="row" id="developers-row"></div>
+          <div class="row" id="logo-url-row"></div>
       </div>
-    </footer>
+  </footer>
 
     <!-- Scripts -->
     <script

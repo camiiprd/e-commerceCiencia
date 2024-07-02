@@ -31,29 +31,70 @@ p {
   color: #666;
 }
 
-/* Estilos del footer */
 footer {
-  background-color: #7797b4;
-  padding-top: 20px;
-  text-align: center;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #b0b4b8; /* Color de fondo */
+  padding: 20px 0; /* Espaciado interior */
+  color: #000000; /* Color del texto */
+  font-size: 14px; /* Tamaño de fuente */
 }
 
-footer .col a {
-  color: #e4e4e4;
-  text-decoration: none;
-  transition: color 0.3s;
+.footer-logo {
+  margin-top: 10px; /* Margen superior para el logo */
 }
 
-footer .col a:hover {
-  color: #010203;
+
+.container {
+  max-width: 960px; /* Ancho máximo del contenido */
+  margin: 0 auto; /* Centrar contenido */
 }
 
-footer .fa-2x {
-  vertical-align: middle;
+.text-center {
+  text-align: center; /* Alinear texto al centro */
+}
+
+.row {
+  display: flex; /* Mostrar filas como flexbox */
+  flex-wrap: wrap; /* Permitir envoltura de elementos flex */
+  margin-right: -15px; /* Corregir el margen derecho negativo */
+  margin-left: -15px; /* Corregir el margen izquierdo negativo */
+}
+
+.col {
+  flex: 0 0 25%; /* Establecer ancho de columna para ocupar 25% del contenedor */
+  max-width: 25%; /* Ancho máximo de la columna */
+  padding: 0 15px; /* Espaciado interior de la columna */
+}
+
+.py-2 {
+  padding-top: 8px; /* Padding superior */
+  padding-bottom: 8px; /* Padding inferior */
+}
+
+/* Estilos para enlaces de desarrolladores */
+.col a {
+  color: #000000; /* Color del enlace */
+  text-decoration: none; /* Quitar subrayado del enlace */
+  margin: 0 5px; /* Margen entre enlaces */
+}
+
+/* Estilos para iconos de redes sociales */
+.col a i {
+  transition: color 0.3s ease; /* Transición suave de color */
+}
+
+.col a:hover i {
+  color: #007bff; /* Cambiar color al pasar el ratón */
+}
+
+.imagen1>img{
+  width: 250px; 
+  margin-top: 40px;
+  margin-bottom: 70px;
+}
+
+.imagen1{
+  display: flex;
+  justify-content: center;
 }
 
 /* Estilos para el botón Crear Producto */
