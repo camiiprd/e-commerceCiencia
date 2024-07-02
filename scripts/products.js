@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var productList = document.getElementById("productList");
   var cartOverlay = document.getElementById("cartOverlay");
   var cartDropdown = document.getElementById("cartDropdown");
-
-  // Función para limitar caracteres y añadir un enlace de "Ver más"
+  
   const limitCharacters = (text, limit = 100) => {
     if (text.length > limit) {
       const trimmedText = text.slice(0, limit);
@@ -14,8 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return text;
   };
-
-  // Función para crear la tarjeta de producto
+ 
   const createProductosCard = (producto, index) => {
     const { title, description, stock, category, image, id, price } = producto;
 
@@ -78,13 +76,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return card;
   };
-
-  // Función para cargar productos desde la API o localStorage
+  
   async function loadProducts() {
     try {
       let products = [];
-
-      // Intentar obtener productos del localStorage primero
+      
       const productsLocalStorage = localStorage.getItem("productoss");
       if (productsLocalStorage) {
         products = JSON.parse(productsLocalStorage);
@@ -93,8 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
           cache: "no-store",
         });
         products = await response.json();
-
-        // Guardar productos en el localStorage
+        
         localStorage.setItem("productoss", JSON.stringify(products));
       }
 
@@ -105,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function renderProducts(products) {
-    productList.innerHTML = ""; // Limpiar contenido actual
+    productList.innerHTML = ""; 
     products.forEach((product, index) => {
       const card = createProductosCard(product, index);
       productList.appendChild(card);
@@ -119,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var total = 0;
     var totalQuantity = 0;
 
-    cartList.innerHTML = ""; // Limpiar contenido actual
+    cartList.innerHTML = ""; 
 
     cart.forEach(function (item) {
       var listItem = document.createElement("li");
@@ -137,8 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
-  // Delegación de eventos para botones "Agregar al carrito"
-  document.addEventListener("click", function (event) {
+    document.addEventListener("click", function (event) {
     if (event.target && event.target.classList.contains("add-to-cart")) {
       var productId = event.target.getAttribute("data-id");
       fetch(`${urlProducts}/${productId}`)
@@ -157,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
           }
           updateCart();
-          showCartOverlay(); // Mostrar overlay del carrito al agregar un producto
+          showCartOverlay(); 
         })
         .catch((error) => {
           console.error("Error al agregar al carrito:", error);
@@ -172,25 +166,22 @@ document.addEventListener("DOMContentLoaded", function () {
   function hideCartOverlay() {
     cartOverlay.style.display = "none";
   }
-
-  // Mostrar overlay del carrito al hacer clic en el ícono del carrito
+ 
   cartDropdown.addEventListener("click", function (event) {
-    event.stopPropagation(); // Prevenir que el evento se propague y cierre el overlay
+    event.stopPropagation(); 
     if (cartOverlay.style.display === "block") {
       hideCartOverlay();
     } else {
       showCartOverlay();
     }
   });
-
-  // Cerrar overlay de carrito al hacer clic fuera de él
+  
   document.addEventListener("click", function (event) {
     if (!cartOverlay.contains(event.target) && event.target !== cartDropdown) {
       hideCartOverlay();
     }
   });
-
-  // Vaciar carrito
+  
   var clearCartButton = document.getElementById("clearCartIndex");
   if (clearCartButton) {
     clearCartButton.addEventListener("click", function () {
@@ -198,12 +189,10 @@ document.addEventListener("DOMContentLoaded", function () {
       updateCart();
     });
   }
-
-  // Limpiar localStorage al recargar la página
+  
   window.addEventListener("beforeunload", function () {
-    localStorage.removeItem("productoss"); // Asegúrate de usar el mismo nombre de clave
+    localStorage.removeItem("productoss"); 
   });
-
-  // Al cargar la página, asegurarse de que el carrito esté actualizado
+  
   updateCart();
 });

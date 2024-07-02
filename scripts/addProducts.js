@@ -1,5 +1,3 @@
-// admin.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const productForm = document.getElementById('productForm');
 
@@ -31,9 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             alert('Producto creado exitosamente.');
-            // Puedes redirigir a otra página o realizar otra acción después de crear el producto
-            console.log(data); // Opcional: muestra la respuesta del servidor en la consola
-            productForm.reset(); // Limpiar el formulario después de enviar
+            console.log(data); 
+            productForm.reset(); 
         })
         .catch(error => {
             console.error('Error al crear el producto:', error);
