@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var cartDropdown = document.getElementById("cartDropdown");
 
   // Función para limitar caracteres y añadir un enlace de "Ver más"
-  const limitCharacters = (text, limit = 250) => {
+  const limitCharacters = (text, limit = 100) => {
     if (text.length > limit) {
       const trimmedText = text.slice(0, limit);
       return `${trimmedText}... <a href="#" class="card-link">Ver más</a>`;
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const { title, description, stock, category, image, id, price } = producto;
 
     const card = document.createElement("div");
-    card.classList.add("mb-4");
+    card.classList.add("mb-5");
 
     const cardInner = document.createElement("div");
     cardInner.classList.add("card", "h-100");

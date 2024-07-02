@@ -31,6 +31,32 @@ p {
   color: #666;
 }
 
+/* boton para volver  */
+.button-up {
+  position: sticky;
+  width: 60px;
+  height: 60px;
+  top: 90%;
+  left: 90%;
+  transform: rotate(270deg);
+  background-color: #202121;
+  border-radius: 50%;
+  transition: 300ms;
+  margin-bottom: 10px;
+}
+.button-up a {
+  position: absolute;
+  text-decoration: none;
+  color: aliceblue;
+  padding: 10px;
+  top: 5px;
+  left: 10px;
+}
+.button-up:hover {
+  transition: 300ms;
+  border-radius: 5px;
+}
+
 footer {
   background-color: #7797b4;
   text-align: center;
