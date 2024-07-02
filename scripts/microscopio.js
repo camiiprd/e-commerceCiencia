@@ -1,13 +1,13 @@
-// products.js
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const productList = document.getElementById("productList");
 
-  // URL del API Mock para obtener productos
+  
   const apiUrl =
     "https://6679076c18a459f6394daa0b.mockapi.io/ecommerceScience/products";
 
-  // Obtener productos del API
+  
   async function getProducts() {
     try {
       const response = await fetch(apiUrl);
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Mostrar productos en la página
+  
   async function showProducts(category) {
     const products = await getProducts();
     const filteredProducts = products.filter(
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-    // Agregar listener de evento para los botones "Agregar al carrito"
+   
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
     addToCartButtons.forEach((button) => {
       button.addEventListener("click", async function (event) {
@@ -58,9 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
           const response = await fetch(`${apiUrl}/${productId}`);
           const product = await response.json();
-
-          // Lógica para agregar el producto al carrito
-          // Aquí deberías adaptar tu lógica de manejo del carrito según necesites
+          
           console.log("Agregando al carrito:", product);
         } catch (error) {
           console.error("Error al agregar al carrito:", error);
