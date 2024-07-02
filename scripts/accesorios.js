@@ -49,6 +49,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+    // Agregar listener de evento para los botones "Agregar al carrito"
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    addToCartButtons.forEach((button) => {
+      button.addEventListener("click", async function (event) {
+        const productId = button.getAttribute("data-id");
+
+        try {
+          const response = await fetch(`${apiUrl}/${productId}`);
+          const product = await response.json();
+
+          // Lógica para agregar el producto al carrito
+          // Aquí deberías adaptar tu lógica de manejo del carrito según necesites
+          console.log("Agregando al carrito:", product);
+        } catch (error) {
+          console.error("Error al agregar al carrito:", error);
+        }
+      });
+    });
+  
+
+
+function updateCart() {
+  var cartList = document.querySelector(".list-group");
+  var total = 0;
+  var totalQuantity = 0;
+
+  cartList.innerHTML = ""; // Limpiar contenido actual
+
+  cart.forEach(function (item) {
+    var listItem = document.createElement("li");
+    listItem.classList.add("list-group-item");
+    listItem.textContent = `${item.product} - $${item.price.toFixed(2)} x ${
+      item.quantity
+    }`;
+    cartList.appendChild(listItem);
+    total += item.price * item.quantity;
+    totalQuantity += item.quantity;
+  });
+
+  document.querySelector(".total-price").textContent = `$${total.toFixed(2)}`;
+  document.querySelector(".badge").textContent = totalQuantity;
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+updateCart()
+
   // Detectar clic en el menú desplegable y filtrar productos
   const dropdownItems = document.querySelectorAll(".dropdown-item");
   dropdownItems.forEach((item) => {
