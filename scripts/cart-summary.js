@@ -8,9 +8,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     cartSummary.innerHTML = "";
 
+    const totalPriceElements = document.querySelectorAll(".total-price");
+    const totalQuantityElements = document.querySelectorAll(".total-quantity");
+
     if (cart.length === 0) {
       cartSummary.innerHTML = "<p>No hay productos en el carrito.</p>";
       document.getElementById("checkout").disabled = true;
+
+      totalPriceElements.forEach(function (element) {
+        element.textContent = "$0.00";
+      });
+
+      totalQuantityElements.forEach(function (element) {
+        element.textContent = "0";
+      });
     } else {
       cart.forEach(function (item, index) {
         var cartItem = document.createElement("div");
@@ -30,21 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       document.getElementById("checkout").disabled = false;
 
-      var totalPriceElement = document.getElementsByClassName("total-price")[1];
-      var totalQuantityElement = document.querySelector(".total-quantity");
+      totalPriceElements.forEach(function (element) {
+        element.textContent = `$${total.toFixed(2)}`;
+      });
 
-      console.log(totalPriceElement, total);
-      if (totalPriceElement) {
-        totalPriceElement.textContent = `$${total.toFixed(2)}`;
-      } else {
-        console.error("Elemento .total-price no encontrado.");
-      }
-
-      if (totalQuantityElement) {
-        totalQuantityElement.textContent = totalQuantity;
-      } else {
-        console.error("Elemento .total-quantity no encontrado.");
-      }
+      totalQuantityElements.forEach(function (element) {
+        element.textContent = totalQuantity;
+      });
     }
   }
 
@@ -88,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCartSummary();
     updateLocalStorage();
 
-    window.location.href = "/index.html";
+    window.location.href = "../index.html";
   });
 
   document.getElementById("clearCart").addEventListener("click", function () {
