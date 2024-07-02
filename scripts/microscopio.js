@@ -62,3 +62,4 @@ document.addEventListener("DOMContentLoaded", function () {
   // Inicialmente, muestra los productos de la categoría 'Microscopios'
   showProducts("Microscopios");
 });
+
