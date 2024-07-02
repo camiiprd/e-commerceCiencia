@@ -1,22 +1,7 @@
-// CARRITO NAVBAR
-document.addEventListener("DOMContentLoaded", () => {
-  const carritoIcon = document.getElementById("carrito-icon");
-  const dropdownMenu = document.querySelector(".dropdown-menu");
-
-  carritoIcon.addEventListener("click", (event) => {
-    event.stopPropagation();
-    dropdownMenu.classList.toggle("show");
-  });
-
-  document.addEventListener("click", () => {
-    dropdownMenu.classList.remove("show");
-  });
-});
-
 // CARDS DE TESTIMONIOS
 const cardsData = [
   {
-    title: "Dra. Maria Gutierrez",
+    title: "Dra. Maria Caro",
     description:
       '"¡Estoy impresionada con la calidad del microscopio que compré en Micros-code! Como bióloga, necesito equipos confiables para mi investigación, y su producto no solo cumple sino que supera mis expectativas. ¡Gracias por facilitar mi trabajo diario!"',
     image:
@@ -30,14 +15,14 @@ const cardsData = [
       "https://s2-valor.glbimg.com/1GpQJmQe_L9-WBnHIPqDb_cyR0o=/0x0:1500x1000/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2023/2/9/wtBBFxTY6Gtf5wYBWEXg/068-top10-vale-laboratorio.jpg",
   },
   {
-    title: "Ana Martinez.",
+    title: "Ana Martinez",
     description:
       "Soy estudiante de medicina y gracias al microscopio estéreo que compré en Micros-code, he podido estudiar muestras tridimensionales con gran precisión. La asesoría que recibí para elegir el modelo adecuado fue muy útil y estoy muy satisfecha con mi compra.",
     image:
       "https://img.freepik.com/free-photo/happy-scientist-smiling-camera-with-protective-glasses_13339-279567.jpg?size=626&ext=jpg",
   },
   {
-    title: "Inv. Natalia Sanchez",
+    title: "Dra. Lia Cleo",
     description:
       "Como investigadora en nanotecnología, necesitaba un microscopio de fluorescencia avanzado para mis experimentos. En Micros-code encontré exactamente lo que buscaba. Su equipo no solo cumplió con mis exigencias técnicas, sino que también el soporte postventa ha sido excepcional",
     image:
@@ -50,8 +35,8 @@ const createCard = (title, description, image) => {
   return `
       <div class="card">
         <img src="${image}" alt="${title}" style="width: 100%; border-radius: 8px 8px 0 0;">
-        <div class="card-content">
-          <h2>${title}</h2>
+        <div class="card-content mt-2">
+          <h2 class= "text-center">${title}</h2>
           <p>${description}</p>
         </div>
       </div>
@@ -75,7 +60,8 @@ const nameForm = document.getElementById("name");
 const emailForm = document.getElementById("email");
 const textArea = document.getElementById("text-area");
 const checkForm = document.getElementById("cbox2");
-const urlContactos ="https://667ef5e9f2cb59c38dc79e38.mockapi.io/api/contact/contact";
+const urlContactos =
+  "https://667ef5e9f2cb59c38dc79e38.mockapi.io/api/contact/contact";
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -114,7 +100,8 @@ form.addEventListener("submit", async (event) => {
 
 const developerRow = document.getElementById("developers-row");
 
-const urlMockApi ="https://666cf4a27a3738f7cacb09c9.mockapi.io/ecommerceScience/developers";
+const urlMockApi =
+  "https://666cf4a27a3738f7cacb09c9.mockapi.io/ecommerceScience/developers";
 
 // Función para obtener datos del desarrollador desde MockAPI de manera asíncrona
 const fetchDeveloperData = async () => {
