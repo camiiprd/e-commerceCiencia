@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Producto - Panel de Administración</title>
+    <link rel="stylesheet" href="../styles/addProducts.css">
+</head>
+<body>
+    <h1>Crear Nuevo Producto</h1>
+    <form id="productForm">
+        <label for="title">Título:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="description">Descripción:</label><br>
+        <textarea id="description" name="description" rows="4" required></textarea><br><br>
+
+        <label for="stock">Stock:</label><br>
+        <input type="number" id="stock" name="stock" required><br><br>
+
+        <label for="category">Categoría:</label><br>
+        <select id="category" name="category" required>
+            <option value="Microscopios">Microscopios</option>
+            <option value="Muestras y Diapositivas">Muestras y Diapositivas</option>
+            <option value="Accesorios">Accesorios</option>
+        </select><br><br>
+
+        <label for="image">URL de la Imagen:</label><br>
+        <input type="url" id="image" name="image" required><br><br>
+
+        <label for="price">Precio:</label><br>
+        <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+        <button type="submit">Crear Producto</button>
+        <a href="../index.html" class="btn btn-primary mt-2">Inicio</a>
+    </form>
+
+    <script src="../scripts/addProducts.js"></script>
+</body>
+</html>

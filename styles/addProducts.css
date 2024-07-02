@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e4e3f1;
+    background-image: url('https://img.freepik.com/vector-premium/fondo-ciencia-vintage_23-2148557498.jpg');
+    background-size: cover;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+form {
+    max-width: 600px;
+    margin: auto;
+    background-color: rgba(255, 255, 253, 0.9); /* Fondo blanco semi-transparente */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+select,
+textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button[type="submit"] {
+    background-color: #867f73;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #c4c5a0;
+}
+
+button[type="submit"]:focus {
+    outline: none;
+}
+
+button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* addProducts.css */
+.btn-primary {
+    background-color: #867f73;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #c4c5a0;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    outline: none;
+}
+
+.btn-primary:disabled, .btn-primary.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

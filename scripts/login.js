@@ -37,8 +37,12 @@ async function login(){
         localStorage.setItem('logUser', JSON.stringify({
             name: user.name,
             lastname: user.lastname,
-            email: user.email
+            email: user.email,
+            role: user.role
         }))
+
+        localStorage.setItem('isLoggedIn', true)
+        localStorage.setItem('userRole', user.role)
 
         window.location.href = '../index.html'
         
@@ -60,8 +64,32 @@ async function mostrarUsers(){
     }
 }
 
+function updateVisibility() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
+    const userRole = localStorage.getItem('userRole')
+
+    const crearProductoBtn = document.getElementById('crearProductoBtn')
+
+    if (isLoggedIn && userRole === 'admin') {
+        crearProductoBtn.style.display = 'block'
+    } else {
+        crearProductoBtn.style.display = 'none'
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateVisibility();
+
+    const crearProductoBtn = document.getElementById('crearProductoBtn');
+    crearProductoBtn.addEventListener('click', () => {
+        window.location.href = './pages/addProducts.html';
+    });
+});
+
 async function logout(){
     localStorage.removeItem('logUser')
+    localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('userRole')
     window.location.href = './index.html'
 }
 

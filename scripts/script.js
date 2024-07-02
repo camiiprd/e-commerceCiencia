@@ -94,5 +94,3 @@ const updateFooter = (developers) => {
 
 // Llamar a la función fetchDeveloperData cuando se carga el DOM
 document.addEventListener("DOMContentLoaded", fetchDeveloperData);
-
-
