@@ -13,9 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
       alt: "Slide 3",
     },
   ];
+
   
   var carouselInner = document.querySelector(".carousel-inner");
   
+
   images.forEach(function (imageObj, index) {
     var carouselItem = document.createElement("div");
     carouselItem.classList.add("carousel-item");
@@ -34,17 +36,20 @@ document.addEventListener("DOMContentLoaded", function () {
   var carousel = new bootstrap.Carousel(myCarousel, {
     interval: 4000, 
     wrap: true, 
+    interval: 4000,
+    wrap: true, 
   });
 });
 
 const developerRow = document.getElementById("developers-row");
-
 const urlMockApi =
   "https://666cf4a27a3738f7cacb09c9.mockapi.io/ecommerceScience/developers";
+
 
 const fetchDeveloperData = async () => {
   try {
        const storedDevelopers = localStorage.getItem("devs");
+    const storedDevelopers = localStorage.getItem("devs");
     if (storedDevelopers) {
       const developers = JSON.parse(storedDevelopers);
       updateFooter(developers);
@@ -63,7 +68,9 @@ const fetchDeveloperData = async () => {
   }
 };
 
+
 const updateFooter = (developers) => {
+  developerRow.innerHTML = ""; 
   developerRow.innerHTML = ""; 
   developers.forEach((developer) => {
     const col = document.createElement("div");

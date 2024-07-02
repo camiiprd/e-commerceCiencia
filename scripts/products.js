@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var cartOverlay = document.getElementById("cartOverlay");
   var cartDropdown = document.getElementById("cartDropdown");
   
+
   const limitCharacters = (text, limit = 100) => {
     if (text.length > limit) {
       const trimmedText = text.slice(0, limit);
@@ -77,10 +78,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return card;
   };
   
+
   async function loadProducts() {
     try {
       let products = [];
       
+
       const productsLocalStorage = localStorage.getItem("productoss");
       if (productsLocalStorage) {
         products = JSON.parse(productsLocalStorage);
@@ -90,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         products = await response.json();
         
+
         localStorage.setItem("productoss", JSON.stringify(products));
       }
 
@@ -100,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function renderProducts(products) {
+    productList.innerHTML = ""; 
     productList.innerHTML = ""; 
     products.forEach((product, index) => {
       const card = createProductosCard(product, index);
@@ -114,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var total = 0;
     var totalQuantity = 0;
 
+    cartList.innerHTML = ""; 
     cartList.innerHTML = ""; 
 
     cart.forEach(function (item) {
@@ -152,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           updateCart();
           showCartOverlay(); 
+          showCartOverlay(); 
         })
         .catch((error) => {
           console.error("Error al agregar al carrito:", error);
@@ -167,7 +174,9 @@ document.addEventListener("DOMContentLoaded", function () {
     cartOverlay.style.display = "none";
   }
  
+
   cartDropdown.addEventListener("click", function (event) {
+    event.stopPropagation(); 
     event.stopPropagation(); 
     if (cartOverlay.style.display === "block") {
       hideCartOverlay();
@@ -176,12 +185,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
   
+
   document.addEventListener("click", function (event) {
     if (!cartOverlay.contains(event.target) && event.target !== cartDropdown) {
       hideCartOverlay();
     }
   });
   
+
   var clearCartButton = document.getElementById("clearCartIndex");
   if (clearCartButton) {
     clearCartButton.addEventListener("click", function () {
@@ -190,9 +201,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   
+
   window.addEventListener("beforeunload", function () {
     localStorage.removeItem("productoss"); 
+    localStorage.removeItem("productoss");
   });
   
+
   updateCart();
 });

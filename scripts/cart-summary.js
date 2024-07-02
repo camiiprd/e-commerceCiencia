@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var totalQuantity = 0;
 
     cartSummary.innerHTML = ""; 
+    cartSummary.innerHTML = "";
 
     if (cart.length === 0) {
       cartSummary.innerHTML = "<p>No hay productos en el carrito.</p>";
@@ -30,16 +31,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
       document.getElementById("checkout").disabled = false; 
       var totalPriceElement = document.querySelector(".total-price");
+      document.getElementById("checkout").disabled = false;
+
+      var totalPriceElement = document.getElementsByClassName("total-price")[1];
       var totalQuantityElement = document.querySelector(".total-quantity");
 
+      console.log(totalPriceElement, total);
       if (totalPriceElement) {
         totalPriceElement.textContent = `$${total.toFixed(2)}`; 
+        totalPriceElement.textContent = `$${total.toFixed(2)}`;
       } else {
         console.error("Elemento .total-price no encontrado.");
       }
 
       if (totalQuantityElement) {
         totalQuantityElement.textContent = totalQuantity; 
+        totalQuantityElement.textContent = totalQuantity;
+      } else {
         console.error("Elemento .total-quantity no encontrado.");
       }
     }
@@ -85,6 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
     cart = [];
     updateCartSummary();
     updateLocalStorage();
+
+    window.location.href = "/index.html";
   });
 
   document.getElementById("clearCart").addEventListener("click", function () {

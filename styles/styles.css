@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 * {
   margin: 0;
   padding: 0;
@@ -31,7 +31,6 @@ p {
   color: #666;
 }
 
-/* boton para volver  */
 .button-up {
   position: sticky;
   width: 60px;
@@ -88,7 +87,6 @@ h6 {
   font-weight: bold;
 }
 
-/* Estilos para el botón Crear Producto */
 #crearProductoBtn {
   background-color: #e4e4e4;
   color: rgb(0, 0, 0);
@@ -112,7 +110,6 @@ h6 {
   cursor: not-allowed;
 }
 
-/* Otros estilos */
 .btn-secondary {
   display: flex;
   margin: 15px;
