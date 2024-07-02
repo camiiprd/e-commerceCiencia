@@ -48,7 +48,7 @@ const urlMockApi =
 
 const fetchDeveloperData = async () => {
   try {
-       const storedDevelopers = localStorage.getItem("devs");
+       
     const storedDevelopers = localStorage.getItem("devs");
     if (storedDevelopers) {
       const developers = JSON.parse(storedDevelopers);

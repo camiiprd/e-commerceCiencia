@@ -3,7 +3,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const productList = document.getElementById("productList");
 
-   const apiUrl =
   
   const apiUrl =
     "https://6679076c18a459f6394daa0b.mockapi.io/ecommerceScience/products";
