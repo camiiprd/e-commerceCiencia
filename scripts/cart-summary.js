@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var total = 0;
     var totalQuantity = 0;
 
+    cartSummary.innerHTML = "";
+
+    const totalPriceElements = document.querySelectorAll(".total-price");
+    const totalQuantityElements = document.querySelectorAll(".total-quantity");
     cartSummary.innerHTML = ""; 
     cartSummary.innerHTML = "";
 
@@ -33,8 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
       var totalPriceElement = document.querySelector(".total-price");
       document.getElementById("checkout").disabled = false;
 
-      var totalPriceElement = document.getElementsByClassName("total-price")[1];
-      var totalQuantityElement = document.querySelector(".total-quantity");
+      totalPriceElements.forEach(function (element) {
+        element.textContent = `$${total.toFixed(2)}`;
+      });
 
       console.log(totalPriceElement, total);
       if (totalPriceElement) {
@@ -94,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCartSummary();
     updateLocalStorage();
 
-    window.location.href = "/index.html";
+    window.location.href = "../index.html";
   });
 
   document.getElementById("clearCart").addEventListener("click", function () {
